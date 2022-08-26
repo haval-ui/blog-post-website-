@@ -38,7 +38,6 @@ app.get('/contact', (req, res) => {
 app.get('/compose', (req, res) => {
   res.render('compose')
 })
-
 app.post('/compose', function (req, res) {
   const post ={
     postTitle:req.body.postTitle,
@@ -48,6 +47,17 @@ app.post('/compose', function (req, res) {
   res.redirect('/')
 })
 
+app.get('/posts/:anything', (req, res) => {
+  let isthere=req.params.anything
+  
+  posts.forEach((post) => {
+    if (post == isthere);{
+      console.log("a math found !!")
+    }
+    
+  });
+  res.redirect('/')
+})
 
 
 
