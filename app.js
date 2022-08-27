@@ -49,16 +49,13 @@ app.post('/compose', function (req, res) {
 
 app.get('/posts/:anything', (req, res) => {
   
-  let isthere=req.params.anything
-  let enterdTitle =_.lowerCase(isthere);
+  let enterdTitle =_.lowerCase(req.params.anything);
   posts.forEach((post) => {
-    let rePostTitle = post.postTitle;
-    let rePostBody =post.postBody;
-    let existPostTitle =_.lowerCase(rePostTitle);
-    if ( existPostTitle == enterdTitle);{
+    let existPostTitle =_.lowerCase(post.postTitle);
+    if ( existPostTitle === enterdTitle ){
       res.render('post', {
-          postHeading:rePostTitle,
-          postContent:rePostBody,
+          postHeading:post.postTitle,
+          postContent:post.postBody,
         })
     }
     
